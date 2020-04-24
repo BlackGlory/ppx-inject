@@ -1,6 +1,6 @@
 # ppx-inject
 
-该项目用于为Profixier的profile自动注入中国IP地址的Direct访问规则.
+该项目用于为Proxifier的profile自动注入中国IP地址的Direct访问规则.
 
 中国IP地址的范围由程序自动从亚太互联网络信息中心(APNIC)获取, 项目本身不附带IP地址数据库.
 
