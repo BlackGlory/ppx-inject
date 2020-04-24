@@ -1,9 +1,8 @@
-import { buildProfileXml, createTargetsFromAddressRanges, readProxifierProfile,updateProfile, getRuleList, createDirectRules, mergeRuleList } from './profile'
+import { writeProfileFile, createTargetsFromAddressRanges, readProfileFile,updateProfile, getRuleList, createDirectRules, mergeRuleList } from './profile'
 import { parseChinaIPAddressRanges } from './china-ips'
 import * as fs from 'fs-extra'
 import { fetchLatestChecksum, fetchLatestStatisticsFile, Domain, Registry } from 'internet-number'
 import * as path from 'path'
-import fastify = require('fastify')
 
 ;(async () => {
   const filename = process.argv[2]
@@ -11,54 +10,37 @@ import fastify = require('fastify')
     console.error('The argument filename is required.')
     process.exit(1)
   }
-  const basename = path.basename(filename)
 
   if (await isDataFilesExisted()) {
-    console.info('Download latest checksum...')
+    console.info('Checking for updates...')
     const checksum = await fetchLatestChecksum(Domain.APNIC, Registry.APNIC)
 
     if (await getExistedChecksum() !== checksum) {
-      console.info('The existed statistics file has expired.')
       await saveChecksum(checksum)
 
-      console.info('Download latest statistics file...')
+      console.info('Downloading the latest statistics file...')
       await downloadStatisticsFile()
     }
   } else {
     await ensureDataPath()
-
-    console.info('Download latest checksum...')
+    console.info('Downloading the latest checksum file...')
     await downloadChecksum()
 
-    console.info('Download latest statistics file...')
+    console.info('Downloading the latest statistics file...')
     await downloadStatisticsFile()
   }
 
-  const server = fastify()
+  console.info('Updating the profile...')
+  const chinaIpRanges = await parseChinaIPAddressRanges(getStatisticsPath())
+  const targets = createTargetsFromAddressRanges(chinaIpRanges)
+  const profile = await readProfileFile(filename)
+  const newRuleList = mergeRuleList(getRuleList(profile), createDirectRules(targets))
+  const newProfile = updateProfile(profile, newRuleList)
+  await writeProfileFile(filename, newProfile)
+  console.info('Done.\n')
 
-  server.get(`/${basename}`, async (_, reply) => {
-    const chinaIpRanges = await parseChinaIPAddressRanges(getStatisticsPath())
-    const targets = createTargetsFromAddressRanges(chinaIpRanges)
-    const profile = await readProxifierProfile(filename)
-    const newRuleList = mergeRuleList(getRuleList(profile), createDirectRules(targets))
-    const newProfile = updateProfile(profile, newRuleList)
-    const xml = buildProfileXml(newProfile)
-
-    await reply
-      .type('application/xml')
-      .send(xml)
-    process.exit(0)
-  })
-
-  server.listen((err, address) => {
-    if (err) {
-      console.error(err)
-      process.exit(1)
-    }
-    console.info('The one-time server will close after accessing the URL.')
-    console.info('Please update single profile file from:')
-    console.info(`${address}/${basename}`)
-  })
+  console.info('Please run the command to load the new profile file:')
+  console.info(`Proxifier ${path.resolve(filename)} silent-load`)
 })()
 
 async function ensureDataPath() {

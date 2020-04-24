@@ -1,10 +1,12 @@
 {
   "name": "ppx-inject",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "bin": "lib/cli.js",
-  "files": [ "lib" ],
+  "files": [
+    "lib"
+  ],
   "repository": "git@github.com:BlackGlory/ppx-inject.git",
   "author": "BlackGlory <woshenmedoubuzhidao@blackglory.me>",
   "license": "MIT",
@@ -20,7 +22,6 @@
     "build": "tsc --project tsconfig.build.json && tscpaths -p tsconfig.build.json -s ./src -o ./lib"
   },
   "dependencies": {
-    "fastify": "^2.13.1",
     "fs-extra": "^9.0.0",
     "immer": "^6.0.3",
     "internet-number": "^2.2.0",

@@ -21,15 +21,14 @@ interface Profile {
   }
 }
 
-export async function readProxifierProfile(filename: string): Promise<Profile> {
+export async function readProfileFile(filename: string): Promise<Profile> {
   const text = await fs.readFile(filename, { encoding: 'utf8' })
   return await xml2js.parseStringPromise(text)
 }
 
-export function buildProfileXml(profile: Profile): string {
-  const builder = new xml2js.Builder()
-  const xml = builder.buildObject(profile)
-  return xml
+export async function writeProfileFile(filename: string, profile: Profile): Promise<void> {
+  const xml = buildProfileXml(profile)
+  await fs.writeFile(filename, xml, { encoding: 'utf8' })
 }
 
 export function updateProfile(profile: Profile, newRuleList: Rule[]): Profile {
@@ -96,4 +95,10 @@ function replaceRuleList(profile: Profile, ruleList: Rule[]): Profile {
 
 function getProgramCreatedFlag() {
   return '[program-created]'
+}
+
+function buildProfileXml(profile: Profile): string {
+  const builder = new xml2js.Builder()
+  const xml = builder.buildObject(profile)
+  return xml
 }
