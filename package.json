@@ -4,6 +4,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "bin": "lib/cli.js",
+  "files": [ "lib" ],
   "repository": "git@github.com:BlackGlory/ppx-inject.git",
   "author": "BlackGlory <woshenmedoubuzhidao@blackglory.me>",
   "license": "MIT",
