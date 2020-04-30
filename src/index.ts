@@ -16,6 +16,9 @@ import * as path from 'path'
     const checksum = await fetchLatestChecksum(Domain.APNIC, Registry.APNIC)
 
     if (await getExistedChecksum() !== checksum) {
+      console.info('Cleaning expired files...')
+      await cleanExpiredFiles()
+
       await saveChecksum(checksum)
 
       console.info('Downloading the latest statistics file...')
@@ -23,6 +26,7 @@ import * as path from 'path'
     }
   } else {
     await ensureDataPath()
+
     console.info('Downloading the latest checksum file...')
     await downloadChecksum()
 
@@ -61,6 +65,11 @@ async function isDataFilesExisted(): Promise<boolean> {
       && await fs.pathExists(getStatisticsPath())
 }
 
+async function cleanExpiredFiles() {
+  await fs.remove(getChecksumPath())
+  await fs.remove(getStatisticsPath())
+}
+
 async function getExistedChecksum(): Promise<string> {
   return await fs.readFile(getChecksumPath(), { encoding: 'utf8' })
 }
@@ -76,8 +85,10 @@ async function downloadChecksum() {
 
 async function downloadStatisticsFile() {
   const rs = await fetchLatestStatisticsFile(Domain.APNIC, Registry.APNIC)
-  const ws = fs.createWriteStream(getStatisticsPath())
+  const tempFilename = getStatisticsPath() + '.downloading'
+  const ws = fs.createWriteStream(tempFilename)
   await pipePromise(rs, ws)
+  await fs.move(tempFilename, getStatisticsPath())
 }
 
 function getDataPath(file?: string): string {
