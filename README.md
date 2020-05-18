@@ -20,6 +20,7 @@ yarn global add ppx-inject
 git clone git@github.com:BlackGlory/ppx-inject.git
 cd ppx-inject
 yarn install
+yarn build
 yarn global add "file:$(pwd)"
 ```
 
