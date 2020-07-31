@@ -65,7 +65,7 @@ export class IPv6AddressRange extends AddressRange {
 export function concatAddressRanges<T extends AddressRange>(ranges: T[], constructor: new (startAddress: bigint, endAddress: bigint) => T): T[] {
   const map = convertIterableToMap(ranges)
   let count = 0
-  for (;;) {
+  while (true) {
     const lastRoundCount = count
     for (const [start, end] of map) {
       const target = end + 1n
