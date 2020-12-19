@@ -1,6 +1,6 @@
 {
   "name": "ppx-inject",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "bin": "lib/cli.js",
   "files": [
     "lib"
