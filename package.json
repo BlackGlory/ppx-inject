@@ -17,7 +17,8 @@
     "dev:debug": "node --inspect-brk node_modules/.bin/ts-node src/index.ts",
     "prepublishOnly": "yarn clean && yarn build",
     "clean": "rm -rf lib",
-    "build": "tsc --project tsconfig.build.json && tscpaths -p tsconfig.build.json -s ./src -o ./lib"
+    "build": "tsc --project tsconfig.build.json && tscpaths -p tsconfig.build.json -s ./src -o ./lib",
+    "release": "standard-version"
   },
   "husky": {
     "hooks": {
@@ -52,6 +53,7 @@
     "eslint": "^7.16.0",
     "husky": "^4.3.6",
     "jest": "^26.6.3",
+    "standard-version": "^9.0.0",
     "ts-jest": "^26.4.4",
     "ts-node": "^9.1.1",
     "tscpaths": "^0.0.9",
