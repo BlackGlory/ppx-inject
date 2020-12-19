@@ -1,6 +1,6 @@
 import * as ip from 'ip'
 import { Address6 } from 'ip-address'
-import { HashSet } from './hash-set'
+import { HashSet } from '@blackglory/structures'
 
 export class AddressRange {
   constructor(public readonly startAddress: bigint, public readonly endAddress: bigint) {}
