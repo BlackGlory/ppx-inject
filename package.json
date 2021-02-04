@@ -35,7 +35,7 @@
     "internet-number": "^2.2.2",
     "ip": "^1.1.5",
     "ip-address": "^7.1.0",
-    "iterable-operator": "^0.12.2",
+    "iterable-operator": "^0.13.2",
     "nanoid": "^3.1.20",
     "tmp-promise": "^3.0.2",
     "xml2js": "^0.4.23"
@@ -45,7 +45,6 @@
     "@commitlint/config-conventional": "^11.0.0",
     "@types/fs-extra": "^9.0.5",
     "@types/ip": "^1.1.0",
-    "@types/ip-address": "^7.0.0",
     "@types/jest": "^26.0.19",
     "@types/jsbn": "^1.2.29",
     "@types/node": "^14.14.14",

@@ -5,7 +5,7 @@ dependencies:
   internet-number: 2.2.6
   ip: 1.1.5
   ip-address: 7.1.0
-  iterable-operator: 0.12.11
+  iterable-operator: 0.13.2
   nanoid: 3.1.20
   tmp-promise: 3.0.2
   xml2js: 0.4.23
@@ -14,7 +14,6 @@ devDependencies:
   '@commitlint/config-conventional': 11.0.0
   '@types/fs-extra': 9.0.6
   '@types/ip': 1.1.0
-  '@types/ip-address': 7.0.0
   '@types/jest': 26.0.20
   '@types/jsbn': 1.2.29
   '@types/node': 14.14.25
@@ -830,13 +829,6 @@ packages:
     dev: true
     resolution:
       integrity: sha512-mWA/4zFQhfvOA8zWkXobwJvBD7vzcxgrOQ0J5CH1votGqdq9m7+FwtGaqyCZqC3NyyBkc9z4m+iry4LlqcMWJg==
-  /@types/ip-address/7.0.0:
-    dependencies:
-      ip-address: 7.1.0
-    deprecated: This is a stub types definition. ip-address provides its own type definitions, so you do not need this installed.
-    dev: true
-    resolution:
-      integrity: sha512-OyDm4EwZsYPDUjXz3ktiuQE8PJIPO1uUZMfvZMcWmykWjm3WVyI78rAnHkqKV3pMR7iDRKfalI+RxG5JBDUo5w==
   /@types/ip/1.1.0:
     dependencies:
       '@types/node': 14.14.25
@@ -3132,6 +3124,7 @@ packages:
     dependencies:
       jsbn: 1.1.0
       sprintf-js: 1.1.2
+    dev: false
     engines:
       node: '>= 10'
     resolution:
@@ -3469,12 +3462,6 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-9tZvz7AiR3PEDNGiV9vIouQ/EAcqMXFmkcA1CDFTwOB98OZVDL0PH9glHotf5Ugp6GCOTypfzGWI/OqjWNCRUw==
-  /iterable-operator/0.12.11:
-    dependencies:
-      '@blackglory/types': 0.2.14
-    dev: false
-    resolution:
-      integrity: sha512-f6g7Ftzxk4JyJNL19/tB1Lt7CnXQC2kcRQ2+SZX0RaSr8+3SuAPLAMzU515dRl5/yfK9YI0JdDvW+hL02+tShQ==
   /iterable-operator/0.13.2:
     dependencies:
       '@blackglory/types': 0.2.14
@@ -3924,6 +3911,7 @@ packages:
     resolution:
       integrity: sha1-peZUwuWi3rXyAdls77yoDA7y9RM=
   /jsbn/1.1.0:
+    dev: false
     resolution:
       integrity: sha1-sBMHyym2GKHtJux56RH4A8TaAEA=
   /jsdom/16.4.0:
@@ -5633,6 +5621,7 @@ packages:
     resolution:
       integrity: sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
   /sprintf-js/1.1.2:
+    dev: false
     resolution:
       integrity: sha512-VE0SOVEHCk7Qc8ulkWw3ntAzXuqf7S2lvwQaDLRnUeIEaKNQJzV6BwmLKhOqT61aGhfUMrXeaBk+oDGCzvhcug==
   /sshpk/1.16.1:
@@ -6467,7 +6456,6 @@ specifiers:
   '@commitlint/config-conventional': ^11.0.0
   '@types/fs-extra': ^9.0.5
   '@types/ip': ^1.1.0
-  '@types/ip-address': ^7.0.0
   '@types/jest': ^26.0.19
   '@types/jsbn': ^1.2.29
   '@types/node': ^14.14.14
@@ -6482,7 +6470,7 @@ specifiers:
   internet-number: ^2.2.2
   ip: ^1.1.5
   ip-address: ^7.1.0
-  iterable-operator: ^0.12.2
+  iterable-operator: ^0.13.2
   jest: ^26.6.3
   nanoid: ^3.1.20
   npm-run-all: ^4.1.5
