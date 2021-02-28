@@ -1,5 +1,5 @@
 import { IPv4AddressRange, IPv6AddressRange } from './address-range'
-import { splitCount } from './split-count'
+import { splitStringAccordingToLengthAndDelimiter } from './split-string-according-to-length-and-delimiter'
 import { promises as fs } from 'fs'
 import * as xml2js from 'xml2js'
 import { nanoid } from 'nanoid'
@@ -71,7 +71,7 @@ export function mergeRuleList(oldRuleList: Rule[], newRuleList: Rule[]): Rule[] 
 export function createDirectRules(targets: string): Rule[] {
   const LIMIT_PER_RULE = 32767
 
-  const group = splitCount(targets, LIMIT_PER_RULE, ';')
+  const group = splitStringAccordingToLengthAndDelimiter(targets, LIMIT_PER_RULE, ';')
 
   return group.map(rule => createDirectRule('chinaips', rule))
 
