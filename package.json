@@ -29,6 +29,7 @@
     }
   },
   "dependencies": {
+    "@blackglory/go": "^0.1.0",
     "@blackglory/structures": "^0.1.13",
     "fs-extra": "^9.0.1",
     "immer": "^8.0.0",

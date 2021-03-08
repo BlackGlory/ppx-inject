@@ -1,10 +1,11 @@
+import { go } from '@blackglory/go'
 import { writeProfileFile, createTargetsFromAddressRanges, readProfileFile,updateProfile, getRuleList, createDirectRules, mergeRuleList } from './profile'
 import { parseChinaIPAddressRanges } from './china-ips'
 import * as fs from 'fs-extra'
 import { fetchLatestChecksum, fetchLatestStatisticsFile, Domain, Registry } from 'internet-number'
 import * as path from 'path'
 
-;(async () => {
+go(async () => {
   const filename = process.argv[2]
   if (!filename) {
     console.error('The argument filename is required.')
@@ -45,7 +46,7 @@ import * as path from 'path'
 
   console.info('Please run the command to load the new profile file:')
   console.info(`Proxifier ${path.resolve(filename)} silent-load`)
-})()
+})
 
 async function ensureDataPath() {
   return await fs.ensureDir(getDataPath())
