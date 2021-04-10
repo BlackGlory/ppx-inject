@@ -1,4 +1,4 @@
-import { IPv4AddressRange, IPv6AddressRange } from './address-range'
+import { IPv4AddressRange, IPv6AddressRange } from 'address-range'
 import { splitStringAccordingToLengthAndDelimiter } from './split-string-according-to-length-and-delimiter'
 import { promises as fs } from 'fs'
 import * as xml2js from 'xml2js'

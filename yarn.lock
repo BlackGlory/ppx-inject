@@ -758,13 +758,6 @@
   dependencies:
     "@types/node" "*"
 
-"@types/ip@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@types/ip/-/ip-1.1.0.tgz#aec4f5bfd49e4a4c53b590d88c36eb078827a7c0"
-  integrity sha512-dwNe8gOoF70VdL6WJBwVHtQmAX4RMd62M+mAB9HQFjG1/qiCLM/meRy95Pd14FYBbEDwCq7jgJs89cHpLBu4HQ==
-  dependencies:
-    "@types/node" "*"
-
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0", "@types/istanbul-lib-coverage@^2.0.1":
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/@types/istanbul-lib-coverage/-/istanbul-lib-coverage-2.0.3.tgz#4ba8ddb720221f432e443bd5f9117fd22cfd4762"
@@ -976,6 +969,15 @@ add-stream@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/add-stream/-/add-stream-1.0.0.tgz#6a7990437ca736d5e1288db92bd3266d5f5cb2aa"
   integrity sha1-anmQQ3ynNtXhKI25K9MmbV9csqo=
+
+address-range@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/address-range/-/address-range-0.1.0.tgz#18fef36c35d1efd4107a4e931c2cda21370e7365"
+  integrity sha512-S8a/jKpEVb8IWFGkuIn9SxHAS6V0Ioz8K1Wg9oMlYO8VH8iedhxy1FY32aM3RmZTCJX4j/MkN75w06kKV5JyEQ==
+  dependencies:
+    "@blackglory/structures" "^0.1.14"
+    ip "^1.1.5"
+    ip-address "^7.1.0"
 
 ajv@^6.10.0, ajv@^6.12.3, ajv@^6.12.4:
   version "6.12.6"
@@ -1501,11 +1503,6 @@ commander@^7.2.0:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-7.2.0.tgz#a36cb57d0b501ce108e4d20559a150a391d97ab7"
   integrity sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==
-
-commmander@^0.0.1-security:
-  version "0.0.1-security"
-  resolved "https://registry.yarnpkg.com/commmander/-/commmander-0.0.1-security.tgz#a78fdcb0b930467b3677e0d361c9ffd0c6b55d7c"
-  integrity sha512-yo4CK1aX6cxiyQ2yWIClJwukKXRcc3cQdUiCsmyKoAkFj+my7Pp/MKsKJHk04PzheYp3Pde5Wg0toBdMUCEj/w==
 
 compare-func@^2.0.0:
   version "2.0.0"

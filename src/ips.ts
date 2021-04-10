@@ -1,4 +1,9 @@
-import { concatAddressRanges, removeIntersections, IPv4AddressRange, IPv6AddressRange } from './address-range'
+import {
+  concatAddressRanges
+, removeIntersections
+, IPv4AddressRange
+, IPv6AddressRange
+} from 'address-range'
 import { parseStatisticsFile, isRecord, IRecord } from 'internet-number'
 import { AsyncIterableOperator } from 'iterable-operator/lib/es2018/style/chaining'
 
