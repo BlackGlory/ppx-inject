@@ -6,11 +6,11 @@ This CLI program can inject Direct access rules into Proxifier's profile.
 
 ```powershell
 npm install -g ppx-inject
-# 或
+# or
 yarn global add ppx-inject
 ```
 
-### From source code
+### Install from source
 
 ```powershell
 git clone git@github.com:BlackGlory/ppx-inject.git
