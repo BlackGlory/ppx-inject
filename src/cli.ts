@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { Command } from 'commander'
+import { program } from 'commander'
 import {
   writeProfileFile
 , createTargetsFromAddressRanges
@@ -19,22 +19,19 @@ import {
 } from 'internet-number'
 import * as path from 'path'
 
-const program = new Command()
-
 program
   .name(require('../package.json').name)
   .version(require('../package.json').version)
   .description(require('../package.json').description)
   .option('--cc <cc...>', 'ISO 3166 2-letter code of the organization to which the allocation or assignment was made.')
   .arguments('<profile>')
-  .action(async () => {
+  .action(async (profile: string) => {
     const opts = program.opts()
     const cc: string[] = opts.cc
-    const profile: string = opts.profile
 
     await inject(cc, profile)
   })
-  .parse(process.argv)
+  .parse()
 
 async function inject(cc: string[], profileFilename: string) {
   if (await isDataFilesExisted()) {

@@ -1,6 +1,6 @@
 # ppx-inject
 
-This CLI program can inject Direct access rules into Proxifier's profile.
+The CLI program that inject Direct access rules into Proxifier's profile.
 
 ## Install
 
@@ -25,12 +25,16 @@ yarn global add "file:$(pwd)"
 ```
 Usage: ppx-inject [options] <profile>
 
+The CLI program that inject Direct access rules into Proxifier's profile.
+
 Options:
   -V, --version  output the version number
   --cc <cc...>   ISO 3166 2-letter code of the organization to which the allocation or assignment was made.
-  -h, --help     output usage informatio
+  -h, --help     display help for command
 ```
 
+### Examples
+
 ```powershell
-npx ppx-inject --cc CN .\Default.ppx
+npx ppx-inject --cc=CN .\Default.ppx
 ```
