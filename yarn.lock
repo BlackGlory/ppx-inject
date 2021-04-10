@@ -1497,6 +1497,11 @@ commander@^2.20.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
 
+commmander@^0.0.1-security:
+  version "0.0.1-security"
+  resolved "https://registry.yarnpkg.com/commmander/-/commmander-0.0.1-security.tgz#a78fdcb0b930467b3677e0d361c9ffd0c6b55d7c"
+  integrity sha512-yo4CK1aX6cxiyQ2yWIClJwukKXRcc3cQdUiCsmyKoAkFj+my7Pp/MKsKJHk04PzheYp3Pde5Wg0toBdMUCEj/w==
+
 compare-func@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/compare-func/-/compare-func-2.0.0.tgz#fb65e75edbddfd2e568554e8b5b05fff7a51fcb3"

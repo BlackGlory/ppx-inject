@@ -1,6 +1,10 @@
 import { Cons, convertConsToArray } from '@blackglory/structures'
 
-export function splitStringAccordingToLengthAndDelimiter(str: string, sliceMaximumLength: number, delimiter: string): string[] {
+export function splitStringAccordingToLengthAndDelimiter(
+  str: string
+, sliceMaximumLength: number
+, delimiter: string
+): string[] {
   return convertConsToArray(slice(str))
 
   function slice(str: string): Cons<string> {

@@ -1,12 +1,8 @@
 # ppx-inject
 
-该项目用于为Proxifier的profile自动注入中国IP地址的Direct访问规则.
+This CLI program can inject Direct access rules into Proxifier's profile.
 
-中国IP地址的范围由程序自动从亚太互联网络信息中心(APNIC)获取, 项目本身不附带IP地址数据库.
-
-## 安装
-
-### 从NPM安装
+## Install
 
 ```powershell
 npm install -g ppx-inject
@@ -14,7 +10,7 @@ npm install -g ppx-inject
 yarn global add ppx-inject
 ```
 
-### 从源代码安装
+### From source code
 
 ```powershell
 git clone git@github.com:BlackGlory/ppx-inject.git
@@ -24,10 +20,17 @@ yarn build
 yarn global add "file:$(pwd)"
 ```
 
-## 使用
+## Usage
 
-安装完毕后, 将新增`ppx-inject`命令, 该命令的参数是Proxifier profile文件的路径.
+```
+Usage: ppx-inject [options] <profile>
+
+Options:
+  -V, --version  output the version number
+  --cc <cc...>   ISO 3166 2-letter code of the organization to which the allocation or assignment was made.
+  -h, --help     output usage informatio
+```
 
 ```powershell
-ppx-inject .\profile.ppx
+npx ppx-inject --cc CN .\Default.ppx
 ```

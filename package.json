@@ -29,8 +29,8 @@
     }
   },
   "dependencies": {
-    "@blackglory/go": "^0.1.0",
     "@blackglory/structures": "^0.1.14",
+    "commmander": "^0.0.1-security",
     "fs-extra": "^9.0.1",
     "immer": "^9.0.1",
     "internet-number": "^2.2.10",

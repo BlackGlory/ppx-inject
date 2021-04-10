@@ -3,7 +3,10 @@ import { Address6 } from 'ip-address'
 import { HashSet } from '@blackglory/structures'
 
 export class AddressRange {
-  constructor(public readonly startAddress: bigint, public readonly endAddress: bigint) {}
+  constructor(
+    public readonly startAddress: bigint
+  , public readonly endAddress: bigint
+  ) {}
 
   isSubSetOf(addressRange: AddressRange): boolean {
     return this.startAddress >= addressRange.startAddress
@@ -56,14 +59,22 @@ export class IPv6AddressRange extends AddressRange {
   }
 
   toString(): string {
-    const startAddress = shortenIPv6Address(convertIPv6AddressBigIntToString(this.startAddress))
-    const endAddress = shortenIPv6Address(convertIPv6AddressBigIntToString(this.endAddress))
+    const startAddress = shortenIPv6Address(
+      convertIPv6AddressBigIntToString(this.startAddress)
+    )
+    const endAddress = shortenIPv6Address(
+      convertIPv6AddressBigIntToString(this.endAddress)
+    )
     return `${startAddress}-${endAddress}`
   }
 }
 
-export function concatAddressRanges<T extends AddressRange>(ranges: T[], constructor: new (startAddress: bigint, endAddress: bigint) => T): T[] {
+export function concatAddressRanges<T extends AddressRange>(
+  ranges: T[]
+, constructor: new (startAddress: bigint, endAddress: bigint) => T
+): T[] {
   const map = convertIterableToMap(ranges)
+
   let count = 0
   while (true) {
     const lastRoundCount = count
@@ -78,8 +89,8 @@ export function concatAddressRanges<T extends AddressRange>(ranges: T[], constru
     }
     if (lastRoundCount === count) break
   }
-  const result = convertMapToArray(map)
-  return result
+
+  return convertMapToArray(map)
 
   function convertIterableToMap(iterable: Iterable<T>): Map<bigint, bigint> {
     const collection = new Map<bigint, bigint>()
@@ -101,7 +112,9 @@ export function concatAddressRanges<T extends AddressRange>(ranges: T[], constru
 export function removeSubsets<T extends AddressRange>(ranges: T[]): T[] {
   const subsets = new WeakSet<T>()
   for (const current of ranges) {
-    if (findSuperSet(ranges, current)) subsets.add(current)
+    if (findSuperSet(ranges, current)) {
+      subsets.add(current)
+    }
   }
   return ranges.filter(x => !subsets.has(x))
 
@@ -114,7 +127,10 @@ export function removeSubsets<T extends AddressRange>(ranges: T[]): T[] {
   }
 }
 
-export function removeIntersections<T extends AddressRange>(ranges: T[], constructor: new (startAddress: bigint, endAddress: bigint) => T): T[] {
+export function removeIntersections<T extends AddressRange>(
+  ranges: T[]
+, constructor: new (startAddress: bigint, endAddress: bigint) => T
+): T[] {
   const intersections = new WeakSet<T>()
   const news = new HashSet<T>(range => range.toString())
   for (const current of ranges) {

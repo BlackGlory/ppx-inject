@@ -73,7 +73,7 @@ export function createDirectRules(targets: string): Rule[] {
 
   const group = splitStringAccordingToLengthAndDelimiter(targets, LIMIT_PER_RULE, ';')
 
-  return group.map(rule => createDirectRule('chinaips', rule))
+  return group.map(rule => createDirectRule('directips', rule))
 
   function createDirectRule(prefix: string, target: string): Rule {
     return {
