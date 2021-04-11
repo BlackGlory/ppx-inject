@@ -6,7 +6,8 @@ export async function parseAddressRangesFromStatisticsFile(
   filename: string
 , cc: string[]
 ): Promise<Array<IPv4AddressRange | IPv6AddressRange>> {
-  const records = await new AsyncIterableOperator(parseRecordsFile(filename))
+  const records = await new AsyncIterableOperator(parseStatisticsFile(filename))
+    .filterAsync<IRecord>(isRecord)
     .filterAsync(record => cc.includes(record.cc))
     .toArrayAsync()
 
@@ -36,9 +37,4 @@ export function convertRecordsToRanges(
   const cleanIPv6Ranges = compress(ipv6Ranges, IPv6AddressRange)
 
   return [...cleanIPv4Ranges, ...cleanIPv6Ranges]
-}
-
-function parseRecordsFile(filename: string): AsyncIterable<IRecord> {
-  return new AsyncIterableOperator(parseStatisticsFile(filename))
-    .filterAsync<IRecord>(isRecord)
 }
