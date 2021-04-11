@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@blackglory/structures": "^0.1.14",
-    "address-range": "^0.1.0",
+    "address-range": "^0.2.0",
     "commander": "^7.2.0",
     "fs-extra": "^9.0.1",
     "immer": "^9.0.1",

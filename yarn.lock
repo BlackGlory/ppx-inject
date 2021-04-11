@@ -294,7 +294,7 @@
   dependencies:
     "@blackglory/errors" "^1.1.2"
 
-"@blackglory/types@^0.4.1":
+"@blackglory/types@^0.4.1", "@blackglory/types@^0.4.2":
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/@blackglory/types/-/types-0.4.2.tgz#98c1dbde92fa77415200961a578d4f784c4b6528"
   integrity sha512-Goqz0JIzDg1HfwOce0z0pps3oqsX/XbO51LRdAbXbHDYY9bDm0R+L54uDZfUV7DVQi9v/5jkrmXH6aHlHkgJtg==
@@ -970,14 +970,17 @@ add-stream@^1.0.0:
   resolved "https://registry.yarnpkg.com/add-stream/-/add-stream-1.0.0.tgz#6a7990437ca736d5e1288db92bd3266d5f5cb2aa"
   integrity sha1-anmQQ3ynNtXhKI25K9MmbV9csqo=
 
-address-range@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/address-range/-/address-range-0.1.0.tgz#18fef36c35d1efd4107a4e931c2cda21370e7365"
-  integrity sha512-S8a/jKpEVb8IWFGkuIn9SxHAS6V0Ioz8K1Wg9oMlYO8VH8iedhxy1FY32aM3RmZTCJX4j/MkN75w06kKV5JyEQ==
+address-range@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/address-range/-/address-range-0.2.0.tgz#52f4f44e0bab2cefde0c3073704d650a09d43b47"
+  integrity sha512-IFEV4aPr4xltNJoz0kQAI38mrYaksL0cW+4yPTQpO4GN/nRnVRREVoPQcj1hiuXLgKPU1Z13zNANk/+fA77i+Q==
   dependencies:
     "@blackglory/structures" "^0.1.14"
+    "@blackglory/types" "^0.4.2"
+    hotypes "^0.1.4"
     ip "^1.1.5"
     ip-address "^7.1.0"
+    iterable-operator "^0.13.6"
 
 ajv@^6.10.0, ajv@^6.12.3, ajv@^6.12.4:
   version "6.12.6"
@@ -2800,6 +2803,11 @@ hosted-git-info@^3.0.6:
   integrity sha512-aXpmwoOhRBrw6X3j0h5RloK4x1OzsxMPyxqIHyNfSe2pypkVTZFpEiRoSipPEPlMrh0HW/XsjkJ5WgnCirpNUw==
   dependencies:
     lru-cache "^6.0.0"
+
+hotypes@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/hotypes/-/hotypes-0.1.4.tgz#c5066f9db3447247418633cef3d2c955e19ac5df"
+  integrity sha512-6xl2Gwd/xTmgG1XKs3faY8bZ84w5bNkoqkakAnii7EiKr6Qpi5aCajYWU1IBIMX4m1HpfoeuKZ1RHmSPuKhi6Q==
 
 html-encoding-sniffer@^2.0.1:
   version "2.0.1"

@@ -9,7 +9,7 @@ import {
 , createDirectRules
 , mergeRuleList
 } from './profile'
-import { parseAddressRangesFromStatisticsFile } from './ips'
+import { parseAddressRangesFromStatisticsFile } from './statistics-file'
 import * as fs from 'fs-extra'
 import {
   fetchLatestChecksum

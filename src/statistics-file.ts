@@ -1,9 +1,4 @@
-import {
-  concatAddressRanges
-, removeIntersections
-, IPv4AddressRange
-, IPv6AddressRange
-} from 'address-range'
+import { IPv4AddressRange, IPv6AddressRange, compress } from 'address-range'
 import { parseStatisticsFile, isRecord, IRecord } from 'internet-number'
 import { AsyncIterableOperator } from 'iterable-operator/lib/es2018/style/chaining'
 
@@ -26,7 +21,7 @@ export function convertRecordsToRanges(
     .map(x => {
       const startAddress = x.start
       const hosts = Number.parseInt(x.value, 10)
-      return IPv4AddressRange.create(startAddress, hosts)
+      return IPv4AddressRange.from(startAddress, hosts)
     })
 
   const ipv6Ranges = records
@@ -34,28 +29,13 @@ export function convertRecordsToRanges(
     .map(x => {
       const startAddress = x.start
       const cidr = Number.parseInt(x.value, 10)
-      return IPv6AddressRange.create(startAddress, cidr)
+      return IPv6AddressRange.from(startAddress, cidr)
     })
 
-  const cleanIPv4Ranges = pipe(ipv4Ranges, [
-    xs => concatAddressRanges(xs, IPv4AddressRange)
-  , xs => removeIntersections(xs, IPv4AddressRange)
-  ])
-
-  const cleanIPv6Ranges = pipe(ipv6Ranges, [
-    xs => concatAddressRanges(xs, IPv6AddressRange)
-  , xs => removeIntersections(xs, IPv6AddressRange)
-  ])
+  const cleanIPv4Ranges = compress(ipv4Ranges, IPv4AddressRange)
+  const cleanIPv6Ranges = compress(ipv6Ranges, IPv6AddressRange)
 
   return [...cleanIPv4Ranges, ...cleanIPv6Ranges]
-}
-
-function pipe<T>(x: T, operators: Array<(xs: T) => T>): T {
-  let result = x
-  for (const fn of operators) {
-    result = fn(result)
-  }
-  return result
 }
 
 function parseRecordsFile(filename: string): AsyncIterable<IRecord> {
