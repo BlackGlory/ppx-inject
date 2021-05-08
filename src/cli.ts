@@ -9,8 +9,9 @@ import {
 , createDirectRules
 , mergeRuleList
 } from './profile'
+import { promises as fs, createWriteStream } from 'fs'
+import { pathExists, ensureDir, move } from 'extra-filesystem'
 import { parseAddressRangesFromStatisticsFile } from './statistics-file'
-import * as fs from 'fs-extra'
 import {
   fetchLatestChecksum
 , fetchLatestStatisticsFile
@@ -74,7 +75,7 @@ async function inject(cc: string[], profileFilename: string) {
 }
 
 async function ensureDataPath() {
-  return await fs.ensureDir(getDataPath())
+  return await ensureDir(getDataPath())
 }
 
 function getStatisticsPath() {
@@ -86,14 +87,14 @@ function getChecksumPath() {
 }
 
 async function isDataFilesExisted(): Promise<boolean> {
-  return await fs.pathExists(getDataPath())
-      && await fs.pathExists(getChecksumPath())
-      && await fs.pathExists(getStatisticsPath())
+  return await pathExists(getDataPath())
+      && await pathExists(getChecksumPath())
+      && await pathExists(getStatisticsPath())
 }
 
 async function cleanExpiredFiles() {
-  await fs.remove(getChecksumPath())
-  await fs.remove(getStatisticsPath())
+  await fs.rm(getChecksumPath())
+  await fs.rm(getStatisticsPath())
 }
 
 async function getExistedChecksum(): Promise<string> {
@@ -112,9 +113,9 @@ async function downloadChecksum() {
 async function downloadStatisticsFile() {
   const rs = await fetchLatestStatisticsFile(Domain.APNIC, Registry.APNIC)
   const tempFilename = getStatisticsPath() + '.downloading'
-  const ws = fs.createWriteStream(tempFilename)
+  const ws = createWriteStream(tempFilename)
   await pipePromise(rs, ws)
-  await fs.move(tempFilename, getStatisticsPath())
+  await move(tempFilename, getStatisticsPath())
 }
 
 function getDataPath(file?: string): string {

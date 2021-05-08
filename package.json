@@ -32,11 +32,14 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
+  "engines": {
+    "node": ">= 14"
+  },
   "dependencies": {
     "@blackglory/structures": "^0.1.14",
     "address-range": "^0.2.2",
     "commander": "^7.2.0",
-    "fs-extra": "^10.0.0",
+    "extra-filesystem": "^0.2.12",
     "immer": "^9.0.2",
     "internet-number": "^2.2.10",
     "iterable-operator": "^0.13.6",
@@ -47,7 +50,6 @@
   "devDependencies": {
     "@commitlint/cli": "^12.1.1",
     "@commitlint/config-conventional": "^12.1.1",
-    "@types/fs-extra": "^9.0.11",
     "@types/jest": "^26.0.23",
     "@types/jsbn": "^1.2.29",
     "@types/node": "^15.0.2",
