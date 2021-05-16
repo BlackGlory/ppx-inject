@@ -1,6 +1,6 @@
 {
   "name": "ppx-inject",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "The CLI program that inject Direct access rules into Proxifier's profile.",
   "keywords": [
     "profixier"
