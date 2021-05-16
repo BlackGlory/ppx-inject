@@ -36,13 +36,13 @@
     "node": ">= 14"
   },
   "dependencies": {
-    "@blackglory/structures": "^0.2.0",
-    "address-range": "^0.2.3",
+    "@blackglory/structures": "^0.2.1",
+    "address-range": "^0.2.4",
     "commander": "^7.2.0",
-    "extra-filesystem": "^0.3.0",
+    "extra-filesystem": "^0.3.1",
     "immer": "^9.0.2",
-    "internet-number": "^2.2.12",
-    "iterable-operator": "^0.13.6",
+    "internet-number": "^2.2.13",
+    "iterable-operator": "^0.14.0",
     "nanoid": "^3.1.23",
     "xml2js": "^0.4.23"
   },
