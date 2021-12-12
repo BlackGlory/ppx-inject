@@ -5,7 +5,7 @@ import * as xml2js from 'xml2js'
 import { nanoid } from 'nanoid'
 import produce from 'immer'
 
-interface Rule {
+interface IRule {
   $: { enabled: 'true' | 'false' }
   Name: [string]
   Applications?: [string]
@@ -15,23 +15,23 @@ interface Rule {
   }]
 }
 
-interface Profile {
+interface IProfile {
   ProxifierProfile: {
-    RuleList: [{ Rule: Rule[] }]
+    RuleList: [{ Rule: IRule[] }]
   }
 }
 
-export async function readProfileFile(filename: string): Promise<Profile> {
+export async function readProfileFile(filename: string): Promise<IProfile> {
   const text = await fs.readFile(filename, { encoding: 'utf8' })
   return await xml2js.parseStringPromise(text)
 }
 
-export async function writeProfileFile(filename: string, profile: Profile): Promise<void> {
+export async function writeProfileFile(filename: string, profile: IProfile): Promise<void> {
   const xml = buildProfileXml(profile)
   await fs.writeFile(filename, xml, { encoding: 'utf8' })
 }
 
-export function updateProfile(profile: Profile, newRuleList: Rule[]): Profile {
+export function updateProfile(profile: IProfile, newRuleList: IRule[]): IProfile {
   const newProfile = replaceRuleList(profile, newRuleList)
   return newProfile
 }
@@ -42,11 +42,11 @@ export function createTargetsFromAddressRanges(ranges: Array<IPv4AddressRange | 
     .join(';')
 }
 
-export function getRuleList(profile: Profile): Rule[] {
+export function getRuleList(profile: IProfile): IRule[] {
   return profile.ProxifierProfile.RuleList[0].Rule
 }
 
-export function mergeRuleList(oldRuleList: Rule[], newRuleList: Rule[]): Rule[] {
+export function mergeRuleList(oldRuleList: IRule[], newRuleList: IRule[]): IRule[] {
   const defaultRule = last(oldRuleList)
 
   return oldRuleList
@@ -55,12 +55,12 @@ export function mergeRuleList(oldRuleList: Rule[], newRuleList: Rule[]): Rule[] 
     .concat(newRuleList)
     .concat([defaultRule])
 
-  function isntProgramCreated(x: Rule): boolean {
+  function isntProgramCreated(x: IRule): boolean {
     return !x.Name[0].includes(getProgramCreatedFlag())
   }
 
-  function isnt(val: Rule): (val: Rule) => boolean {
-    return (x: Rule) => x !== val
+  function isnt(val: IRule): (val: IRule) => boolean {
+    return (x: IRule) => x !== val
   }
 
   function last<T>(xs: T[]): T {
@@ -68,14 +68,14 @@ export function mergeRuleList(oldRuleList: Rule[], newRuleList: Rule[]): Rule[] 
   }
 }
 
-export function createDirectRules(targets: string): Rule[] {
+export function createDirectRules(targets: string): IRule[] {
   const LIMIT_PER_RULE = 32767
 
   const group = splitStringAccordingToLengthAndDelimiter(targets, LIMIT_PER_RULE, ';')
 
   return group.map(rule => createDirectRule('directips', rule))
 
-  function createDirectRule(prefix: string, target: string): Rule {
+  function createDirectRule(prefix: string, target: string): IRule {
     return {
       $: { enabled: 'true' }
     , Name: [prefix + '-' + nanoid() + ' ' + getProgramCreatedFlag()]
@@ -87,7 +87,7 @@ export function createDirectRules(targets: string): Rule[] {
   }
 }
 
-function replaceRuleList(profile: Profile, ruleList: Rule[]): Profile {
+function replaceRuleList(profile: IProfile, ruleList: IRule[]): IProfile {
   return produce(profile, (profile => {
     profile.ProxifierProfile.RuleList[0].Rule = ruleList
   }))
@@ -97,7 +97,7 @@ function getProgramCreatedFlag() {
   return '[program-created]'
 }
 
-function buildProfileXml(profile: Profile): string {
+function buildProfileXml(profile: IProfile): string {
   const builder = new xml2js.Builder()
   const xml = builder.buildObject(profile)
   return xml
