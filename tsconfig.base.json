@@ -4,6 +4,7 @@
   , "module": "CommonJS"
   , "skipLibCheck": true
   , "strict": true
+  , "newLine": "lf"
   , "baseUrl": "."
   , "paths": {
       "@src/*": ["src/*"]
