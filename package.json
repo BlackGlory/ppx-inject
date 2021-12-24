@@ -41,7 +41,7 @@
     "commander": "^8.3.0",
     "extra-filesystem": "^0.3.14",
     "immer": "^9.0.7",
-    "internet-number": "^2.2.16",
+    "internet-number": "^3.0.1",
     "iterable-operator": "^0.14.4",
     "nanoid": "^3.1.30",
     "xml2js": "^0.4.23"
