@@ -39,7 +39,7 @@
     "@blackglory/structures": "^0.2.6",
     "address-range": "^0.2.9",
     "commander": "^8.3.0",
-    "extra-filesystem": "^0.3.14",
+    "extra-filesystem": "^0.4.1",
     "immer": "^9.0.7",
     "internet-number": "^3.0.1",
     "iterable-operator": "^0.14.4",

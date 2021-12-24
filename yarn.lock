@@ -1291,13 +1291,6 @@ abab@^2.0.3, abab@^2.0.5:
   resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.5.tgz#c0b678fb32d60fc1219c784d6a826fe385aeb79a"
   integrity sha512-9IK9EadsbHo6jLWIpxpR6pL0sazTXV6+SQv25ZB+F7Bj9mJNaOc4nCRabwd5M/JwmUa8idz6Eci6eKfJryPs6Q==
 
-abort-controller@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/abort-controller/-/abort-controller-3.0.0.tgz#eaf54d53b62bae4138e809ca225c8439a6efb392"
-  integrity sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg==
-  dependencies:
-    event-target-shim "^5.0.0"
-
 acorn-globals@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/acorn-globals/-/acorn-globals-6.0.0.tgz#46cdd39f0f8ff08a876619b55f5ac8a6dc770b45"
@@ -2080,11 +2073,6 @@ copy-descriptor@^0.1.0:
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
 
-core-js@^3.19.2:
-  version "3.19.3"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.19.3.tgz#6df8142a996337503019ff3235a7022d7cdf4559"
-  integrity sha512-LeLBMgEGSsG7giquSzvgBrTS7V5UL6ks3eQlUSbN8dJStlLFiRzUm5iqsRyzUB8carhfKjkJ2vzKqE6z1Vga9g==
-
 core-js@^3.20.0:
   version "3.20.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.20.1.tgz#eb1598047b7813572f1dc24b7c6a95528c99eef3"
@@ -2548,11 +2536,6 @@ esutils@^2.0.2:
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-2.0.3.tgz#74d2eb4de0b8da1293711910d50775b9b710ef64"
   integrity sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==
 
-event-target-shim@^5.0.0:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/event-target-shim/-/event-target-shim-5.0.1.tgz#5d4d3ebdf9583d63a5333ce2deb7480ab2b05789"
-  integrity sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==
-
 eventemitter3@^4.0.7:
   version "4.0.7"
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-4.0.7.tgz#2de9b68f6528d5644ef5c59526a1b4a07306169f"
@@ -2632,16 +2615,6 @@ extglob@^2.0.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
-extra-filesystem@^0.3.14:
-  version "0.3.14"
-  resolved "https://registry.yarnpkg.com/extra-filesystem/-/extra-filesystem-0.3.14.tgz#ec52185c3889ed2498bb62a6acd1e7eb5d3c4a9b"
-  integrity sha512-QraL6B5ufX3OILXEibUlk+lJR4DdpPX7FoPaTNm+Z2P3WrpfHTyLqvY2SlLx2fsDOqQHOAtCUT69aW8f9n3lcw==
-  dependencies:
-    "@blackglory/pass" "^0.1.0"
-    extra-promise "^0.19.4"
-    fs-extra "^10.0.0"
-    tmp-promise "^3.0.3"
-
 extra-filesystem@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/extra-filesystem/-/extra-filesystem-0.4.1.tgz#3887cdfbfe323dff27481cf78cf8d66364cb3e3b"
@@ -2652,7 +2625,7 @@ extra-filesystem@^0.4.1:
     fs-extra "^10.0.0"
     tmp-promise "^3.0.3"
 
-extra-generator@^0.2.14, extra-generator@^0.2.15:
+extra-generator@^0.2.15:
   version "0.2.15"
   resolved "https://registry.yarnpkg.com/extra-generator/-/extra-generator-0.2.15.tgz#49152221a8f4928ffa95d6bb2378d0fdd7435fe0"
   integrity sha512-4SBo5d//YyKw7vVY7Xmk+L+oood9Cc329V/AOLd4qcj6gTO+ao8htRpQSil7Z5CQ1AxrMXmMj2prRv7qvdEldw==
@@ -2667,26 +2640,6 @@ extra-lazy@^0.1.0:
   integrity sha512-dE5jT6rKQSbRGiNTVfe/PQBi7d+cbHEZLyuUSC5c0nqOzngMb9QqptNxlHIQ6me+gWNVOH6fHzX1T+RGB9YsSA==
   dependencies:
     lodash.once "^4.1.1"
-
-extra-promise@^0.19.4:
-  version "0.19.4"
-  resolved "https://registry.yarnpkg.com/extra-promise/-/extra-promise-0.19.4.tgz#50c87b499ed18c54ceabf45666bb6ab1d9d2f775"
-  integrity sha512-tvdAs2rz/hxlqJVAjCAAPKoEuDmbtfSjWdK231fwtMmcN49abYGcUzXgcgjtjLizq4nAdEg/34lv5ewqfale7g==
-  dependencies:
-    "@blackglory/errors" "^1.1.2"
-    "@blackglory/go" "^0.1.1"
-    "@blackglory/pass" "^0.1.0"
-    "@blackglory/structures" "^0.2.6"
-    "@blackglory/types" "^0.5.2"
-    abort-controller "^3.0.0"
-    core-js "^3.19.2"
-    eventemitter3 "^4.0.7"
-    extra-generator "^0.2.14"
-    iterable-operator "^0.14.4"
-    justypes "^0.1.6"
-    lodash.once "^4.1.1"
-    reflect-metadata "^0.1.13"
-    return-style "^0.12.4"
 
 extra-promise@^0.21.0:
   version "0.21.0"
@@ -5312,13 +5265,6 @@ ret@~0.1.10:
   version "0.1.15"
   resolved "https://registry.yarnpkg.com/ret/-/ret-0.1.15.tgz#b8a4825d5bdb1fc3f6f53c2bc33f81388681c7bc"
   integrity sha512-TTlYpa+OL+vMMNG24xSlQGEJ3B/RzEfUlLct7b5G/ytav+wPrplCpVMFuwzXbkecJrb6IYo1iFb0S9v37754mg==
-
-return-style@^0.12.4:
-  version "0.12.4"
-  resolved "https://registry.yarnpkg.com/return-style/-/return-style-0.12.4.tgz#00f77c1570041b645650b231fab20fd8fe95b780"
-  integrity sha512-VCNNx2vcmviKFLJ4kh4syWNSUgPFRtpmaAcDWEA6Hegy7rl/MIW9uNOpti4qDkEn4seYCZd3yRKl0T1pmHKPEA==
-  dependencies:
-    "@blackglory/go" "^0.1.0"
 
 return-style@^0.12.5:
   version "0.12.5"
