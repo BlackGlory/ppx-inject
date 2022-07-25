@@ -24,7 +24,7 @@ program
   .name(require('../package.json').name)
   .version(require('../package.json').version)
   .description(require('../package.json').description)
-  .option('--cc <cc...>', 'ISO 3166 2-letter code of the organization to which the allocation or assignment was made.')
+  .requiredOption('--cc <cc...>', 'ISO 3166 2-letter code of the organization to which the allocation or assignment was made.')
   .arguments('<profile>')
   .action(async (profile: string) => {
     const opts = program.opts<{
