@@ -27,8 +27,10 @@ program
   .option('--cc <cc...>', 'ISO 3166 2-letter code of the organization to which the allocation or assignment was made.')
   .arguments('<profile>')
   .action(async (profile: string) => {
-    const opts = program.opts()
-    const cc: string[] = opts.cc
+    const opts = program.opts<{
+      cc: string[]
+    }>()
+    const cc = opts.cc
 
     await inject(cc, profile)
   })
