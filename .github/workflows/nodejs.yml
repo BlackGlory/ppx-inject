@@ -22,5 +22,5 @@ jobs:
     - run: yarn lint
     - run: yarn build
     - run: yarn test
-      env:
-        CI: true
+    - run: yarn bundle
+    - run: yarn smoke

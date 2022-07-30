@@ -5,36 +5,38 @@
   "keywords": [
     "profixier"
   ],
-  "bin": "lib/cli.js",
+  "bin": "dist/cli.cjs",
   "files": [
-    "lib"
+    "dist"
   ],
   "repository": "git@github.com:BlackGlory/ppx-inject.git",
   "author": "BlackGlory <woshenmedoubuzhidao@blackglory.me>",
   "license": "MIT",
+  "engines": {
+    "node": ">= 14"
+  },
   "scripts": {
     "deduplicate": "yarn-deduplicate",
+    "prepublishOnly": "run-s clean build bundle",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx --quiet src __tests__",
     "test": "jest --config jest.config.js",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "test:coverage": "jest --coverage --config jest.config.js",
     "dev": "ts-node src/index.ts",
     "dev:debug": "node --inspect-brk node_modules/.bin/ts-node src/index.ts",
-    "prepublishOnly": "run-s clean build",
-    "clean": "rimraf lib",
+    "clean": "rimraf lib dist",
     "build": "run-s build:*",
     "build:compile": "tsc --project tsconfig.build.json",
     "build:patch": "tscpaths -p tsconfig.build.json -s ./src -o ./lib",
+    "bundle": "webpack --stats-error-details",
+    "smoke": "node dist/cli.cjs --help",
     "release": "standard-version"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "run-s lint build test",
+      "pre-commit": "run-s clean lint build test bundle smoke",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
-  },
-  "engines": {
-    "node": ">= 14"
   },
   "dependencies": {
     "@blackglory/structures": "^0.3.2",
@@ -66,6 +68,8 @@
     "ts-node": "^10.4.0",
     "tscpaths": "^0.0.9",
     "typescript": "^4.5.4",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
     "yarn-deduplicate": "^5.0.0"
   }
 }

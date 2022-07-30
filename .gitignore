@@ -59,6 +59,7 @@ typings/
 
 # Build
 lib
+dist
 
 # Generated files
 data
