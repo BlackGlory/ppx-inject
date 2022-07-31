@@ -32,5 +32,5 @@ Options:
 
 Example:
 ```powershell
-ppx-inject --cc=CN --cc=HK .\Default.ppx
+ppx-inject --cc=CN --cc=HK --cc=MO .\Default.ppx
 ```
