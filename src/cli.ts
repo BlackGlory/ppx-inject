@@ -20,10 +20,13 @@ import {
 } from 'internet-number'
 import * as path from 'path'
 
+const { name, version, description } = require('../package.json')
+process.title = name
+
 program
-  .name(require('../package.json').name)
-  .version(require('../package.json').version)
-  .description(require('../package.json').description)
+  .name(name)
+  .version(version)
+  .description(description)
   .requiredOption('--cc <cc...>', 'ISO 3166 2-letter code of the organization to which the allocation or assignment was made.')
   .arguments('<profile>')
   .action(async (profile: string) => {
