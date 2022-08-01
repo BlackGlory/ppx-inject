@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.15](https://github.com/BlackGlory/ppx-inject/compare/v0.3.14...v0.3.15) (2022-08-01)
+
+
+### Features
+
+* set process.title ([211f389](https://github.com/BlackGlory/ppx-inject/commit/211f38919d3e3375dc65ebad011b33b91aa969e7))
+
 ### [0.3.14](https://github.com/BlackGlory/ppx-inject/compare/v0.3.13...v0.3.14) (2022-07-30)
 
 
