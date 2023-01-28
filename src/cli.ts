@@ -1,5 +1,14 @@
 #!/usr/bin/env node
 import { program } from 'commander'
+import { promises as fs, createWriteStream } from 'fs'
+import { pathExists, ensureDir, move } from 'extra-filesystem'
+import {
+  fetchLatestChecksum
+, fetchLatestStatisticsFile
+, Domain
+, Registry
+} from 'internet-number'
+import * as path from 'path'
 import {
   writeProfileFile
 , createTargetsFromAddressRanges
@@ -9,16 +18,11 @@ import {
 , createDirectRules
 , mergeRuleList
 } from './profile'
-import { promises as fs, createWriteStream } from 'fs'
-import { pathExists, ensureDir, move } from 'extra-filesystem'
 import { parseAddressRangesFromStatisticsFile } from './statistics-file'
-import {
-  fetchLatestChecksum
-, fetchLatestStatisticsFile
-, Domain
-, Registry
-} from 'internet-number'
-import * as path from 'path'
+
+interface IOptions {
+  cc: string[]
+}
 
 const { name, version, description } = require('../package.json')
 process.title = name
@@ -30,14 +34,16 @@ program
   .requiredOption('--cc <cc...>', 'ISO 3166 2-letter code of the organization to which the allocation or assignment was made.')
   .arguments('<profile>')
   .action(async (profile: string) => {
-    const opts = program.opts<{
-      cc: string[]
-    }>()
-    const cc = opts.cc
+    const options = program.opts<IOptions>()
+    const cc = getCC(options)
 
     await inject(cc, profile)
   })
   .parse()
+
+function getCC(options: IOptions): string[] {
+  return options.cc
+}
 
 async function inject(cc: string[], profileFilename: string) {
   if (await isDataFilesExisted()) {
