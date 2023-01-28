@@ -3,7 +3,7 @@ The CLI program that inject Direct access rules into Proxifier's profile.
 
 ## Install
 ```powershell
-npm install -g ppx-inject
+npm install --global ppx-inject
 # or
 yarn global add ppx-inject
 ```
