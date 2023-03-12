@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/BlackGlory/ppx-inject/compare/v0.3.15...v0.4.0) (2023-03-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* - The minimal version of Node.js is 16.
+- CommonJS => ESM.
+
+* upgrade dependencies ([3b1d6d2](https://github.com/BlackGlory/ppx-inject/commit/3b1d6d20690aa6891953804fcf76d8ed9607ffdc))
+
 ### [0.3.15](https://github.com/BlackGlory/ppx-inject/compare/v0.3.14...v0.3.15) (2022-08-01)
 
 
