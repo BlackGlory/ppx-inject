@@ -8,16 +8,6 @@ npm install --global ppx-inject
 yarn global add ppx-inject
 ```
 
-### Install from source
-```powershell
-git clone git@github.com:BlackGlory/ppx-inject.git
-cd ppx-inject
-yarn install
-yarn build
-yarn bundle
-yarn global add "file:$(pwd)"
-```
-
 ## Usage
 ```
 Usage: ppx-inject [options] <profile>
