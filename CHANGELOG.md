@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.1](https://github.com/BlackGlory/ppx-inject/compare/v0.4.0...v0.4.1) (2023-03-12)
+
+
+### Bug Fixes
+
+* add missing dependencies ([6c3c42a](https://github.com/BlackGlory/ppx-inject/commit/6c3c42ad015d68b2013babb40e6f7cb7ac6a478c))
+
 ## [0.4.0](https://github.com/BlackGlory/ppx-inject/compare/v0.3.15...v0.4.0) (2023-03-12)
 
 
