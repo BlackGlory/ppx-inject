@@ -1,15 +1,24 @@
 import { IPv4AddressRange, IPv6AddressRange, compress } from 'address-range'
-import { parseStatisticsFile, isRecord, IRecord } from 'internet-number'
-import { AsyncIterableOperator } from 'iterable-operator/lib/es2018/style/chaining'
+import {
+  parseStatisticsFile
+, isRecord
+, IRecord
+, IVersion
+, ISummary
+} from 'internet-number'
+import { pipe } from 'extra-utils'
+import { filterAsync, toArrayAsync } from 'iterable-operator'
 
 export async function parseAddressRangesFromStatisticsFile(
   filename: string
 , cc: string[]
 ): Promise<Array<IPv4AddressRange | IPv6AddressRange>> {
-  const records = await new AsyncIterableOperator(parseStatisticsFile(filename))
-    .filterAsync<IRecord>(isRecord)
-    .filterAsync(record => cc.includes(record.cc))
-    .toArrayAsync()
+  const records = await pipe(
+    parseStatisticsFile(filename)
+  , iter => filterAsync<IVersion | ISummary | IRecord, IRecord>(iter, isRecord)
+  , iter => filterAsync(iter, record => cc.includes(record.cc))
+  , toArrayAsync
+  )
 
   return convertRecordsToRanges(records)
 }

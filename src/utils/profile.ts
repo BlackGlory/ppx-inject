@@ -1,9 +1,9 @@
 import { IPv4AddressRange, IPv6AddressRange } from 'address-range'
-import { splitStringAccordingToLengthAndDelimiter } from './split-string-according-to-length-and-delimiter'
+import { splitStringAccordingToLengthAndDelimiter } from '@utils/split-string-according-to-length-and-delimiter.js'
 import { promises as fs } from 'fs'
 import * as xml2js from 'xml2js'
 import { nanoid } from 'nanoid'
-import produce from 'immer'
+import { produce } from 'immer'
 
 interface IRule {
   $: { enabled: 'true' | 'false' }
@@ -26,7 +26,10 @@ export async function readProfileFile(filename: string): Promise<IProfile> {
   return await xml2js.parseStringPromise(text)
 }
 
-export async function writeProfileFile(filename: string, profile: IProfile): Promise<void> {
+export async function writeProfileFile(
+  filename: string
+, profile: IProfile
+): Promise<void> {
   const xml = buildProfileXml(profile)
   await fs.writeFile(filename, xml, { encoding: 'utf8' })
 }
@@ -36,7 +39,9 @@ export function updateProfile(profile: IProfile, newRuleList: IRule[]): IProfile
   return newProfile
 }
 
-export function createTargetsFromAddressRanges(ranges: Array<IPv4AddressRange | IPv6AddressRange>): string {
+export function createTargetsFromAddressRanges(
+  ranges: Array<IPv4AddressRange | IPv6AddressRange>
+): string {
   return ranges
     .map(x => x.toString())
     .join(';')
@@ -93,7 +98,7 @@ function replaceRuleList(profile: IProfile, ruleList: IRule[]): IProfile {
   }))
 }
 
-function getProgramCreatedFlag() {
+function getProgramCreatedFlag(): string {
   return '[program-created]'
 }
 
