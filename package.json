@@ -23,8 +23,6 @@
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --runInBand --config jest.config.cjs",
     "test:coverage": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --runInBand --coverage --config jest.config.cjs",
     "test:debug": "cross-env NODE_OPTIONS='--experimental-vm-modules --inspect-brk' jest --runInBand --config jest.config.cjs",
-    "dev": "ts-node -r tsconfig-paths/register src/cli.ts",
-    "dev:debug": "node --inspect-brk node_modules/.bin/ts-node -r tsconfig-paths/register src/cli.ts",
     "prepublishOnly": "run-s clean prepare build",
     "clean": "rimraf lib",
     "build": "tsc --project tsconfig.build.json",
