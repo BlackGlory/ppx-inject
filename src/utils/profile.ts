@@ -105,5 +105,7 @@ function getProgramCreatedFlag(): string {
 function buildProfileXml(profile: IProfile): string {
   const builder = new xml2js.Builder()
   const xml = builder.buildObject(profile)
-  return xml
+
+  // Proxifier 4 cannot parse HTML Entities
+  return xml.replace(/&#xD;/g, '\r')
 }
