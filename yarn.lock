@@ -2637,12 +2637,20 @@ extra-utils@^4.0.0, extra-utils@^4.0.1:
     justypes "^4.0.0"
     lodash "^4.17.21"
 
-extra-utils@^5.0.1, extra-utils@^5.1.0:
+extra-utils@^5.0.1:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/extra-utils/-/extra-utils-5.1.0.tgz#f5520a3b2cd5a7e3b6a1049f01d6173a244a357e"
   integrity sha512-CvskUlZyqdHzKqLYu+JhcmotjzTss14UODUqoobpqwAkswIFYL2sHXnasb/Lw/pSssd2jw6BI2sjArdJ/jNjfw==
   dependencies:
     justypes "^4.1.0"
+    lodash-es "^4.17.21"
+
+extra-utils@^5.20.0:
+  version "5.20.0"
+  resolved "https://registry.yarnpkg.com/extra-utils/-/extra-utils-5.20.0.tgz#ae1b2cba863700933b7ce3bd013b73915f9c1841"
+  integrity sha512-cZm0kiCeOT05fXYHctD1mFYmaSkPtGFEmvuG0Fa+WfhMH8u6jle8pvGcjU10I3wW91dnV36nJKWum8QLDTwhOQ==
+  dependencies:
+    justypes "^4.2.0"
     lodash-es "^4.17.21"
 
 fast-deep-equal@^3.1.1, fast-deep-equal@^3.1.3:
@@ -3855,6 +3863,11 @@ justypes@^4.0.0, justypes@^4.1.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/justypes/-/justypes-4.2.0.tgz#4bd01e72c16ef91264f5d25a1649c462d4c046d0"
   integrity sha512-7YjBlMdH7MBknvUk8n4gMPWITaIYqL4Q0dpqH7pN57vGLpUFS41RUiAkx2yfZNhylQX6bGw0UNKFSfdpBgwHWw==
+
+justypes@^4.2.0:
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/justypes/-/justypes-4.4.1.tgz#b0abfc67457e349502a18e6a18a7535b0790539e"
+  integrity sha512-FtAULt8THXBX6WvEa0BRdugF+htWc/A0U69gyenZ95IOfCaKkvN6sMeaVP8T8G69UEJS1tceFvJ9dGLikbg6Dw==
 
 kind-of@^6.0.2, kind-of@^6.0.3:
   version "6.0.3"

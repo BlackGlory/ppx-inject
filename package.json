@@ -65,7 +65,7 @@
     "address-range": "^0.2.12",
     "commander": "^10.0.0",
     "extra-filesystem": "^0.4.10",
-    "extra-utils": "^5.1.0",
+    "extra-utils": "^5.20.0",
     "immer": "^9.0.19",
     "internet-number": "^3.0.3",
     "iterable-operator": "^4.0.3",

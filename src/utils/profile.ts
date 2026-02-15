@@ -4,6 +4,7 @@ import { promises as fs } from 'fs'
 import * as xml2js from 'xml2js'
 import { nanoid } from 'nanoid'
 import { produce } from 'immer'
+import { last } from 'extra-utils'
 
 interface IRule {
   $: { enabled: 'true' | 'false' }
@@ -56,20 +57,16 @@ export function mergeRuleList(oldRuleList: IRule[], newRuleList: IRule[]): IRule
 
   return oldRuleList
     .filter(isntProgramCreated)
-    .filter(isnt(defaultRule))
+    .filter(rule => rule !== defaultRule)
     .concat(newRuleList)
-    .concat([defaultRule])
+    .concat(
+      defaultRule
+    ? [defaultRule]
+    : []
+    )
 
   function isntProgramCreated(x: IRule): boolean {
     return !x.Name[0].includes(getProgramCreatedFlag())
-  }
-
-  function isnt(val: IRule): (val: IRule) => boolean {
-    return (x: IRule) => x !== val
-  }
-
-  function last<T>(xs: T[]): T {
-    return xs[xs.length - 1]
   }
 }
 
