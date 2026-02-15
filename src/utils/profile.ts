@@ -1,10 +1,10 @@
 import { IPv4AddressRange, IPv6AddressRange } from 'address-range'
-import { splitStringAccordingToLengthAndDelimiter } from '@utils/split-string-according-to-length-and-delimiter.js'
 import { promises as fs } from 'fs'
 import * as xml2js from 'xml2js'
 import { nanoid } from 'nanoid'
 import { produce } from 'immer'
-import { last } from 'extra-utils'
+import { isEmptyArray, last } from 'extra-utils'
+import { assert, isntEmptyArray } from '@blackglory/prelude'
 
 interface IRule {
   $: { enabled: 'true' | 'false' }
@@ -40,14 +40,6 @@ export function updateProfile(profile: IProfile, newRuleList: IRule[]): IProfile
   return newProfile
 }
 
-export function createTargetsFromAddressRanges(
-  ranges: Array<IPv4AddressRange | IPv6AddressRange>
-): string {
-  return ranges
-    .map(x => x.toString())
-    .join(';')
-}
-
 export function getRuleList(profile: IProfile): IRule[] {
   return profile.ProxifierProfile.RuleList[0].Rule
 }
@@ -70,12 +62,51 @@ export function mergeRuleList(oldRuleList: IRule[], newRuleList: IRule[]): IRule
   }
 }
 
-export function createDirectRules(targets: string): IRule[] {
-  const LIMIT_PER_RULE = 32767
+export function createDirectRules(
+  ipRanges: Array<IPv4AddressRange | IPv6AddressRange>
+, maxLengthPerRule: number = 32767
+): IRule[] {
+  const delimiter = ';'
+  const rules: IRule[] = []
 
-  const group = splitStringAccordingToLengthAndDelimiter(targets, LIMIT_PER_RULE, ';')
+  let targetsParts: string[] = []
+  let targetsLength: number = 0
+  for (const ipRange of ipRanges) {
+    const ipRangeText = ipRange.toString()
 
-  return group.map(rule => createDirectRule('directips', rule))
+    if (isEmptyArray(targetsParts)) {
+      assert(
+        ipRangeText.length <= maxLengthPerRule
+      , `ipRangeText.length should less than or equal to ${maxLengthPerRule}`
+      )
+
+      targetsParts.push(ipRangeText)
+      targetsLength += ipRangeText.length
+    } else {
+      if (targetsLength + delimiter.length + ipRangeText.length > maxLengthPerRule) {
+        const targets = targetsParts.join(delimiter)
+        const rule = createDirectRule('direct-ips', targets)
+        rules.push(rule)
+
+        assert(
+          ipRangeText.length <= maxLengthPerRule
+        , `ipRangeText.length should less than or equal to ${maxLengthPerRule}`
+        )
+        targetsParts = [ipRangeText]
+        targetsLength = ipRangeText.length
+      } else {
+        targetsParts.push(ipRangeText)
+        targetsLength += delimiter.length + ipRangeText.length
+      }
+    }
+  }
+  if (isntEmptyArray(targetsParts)) {
+    const targets = targetsParts.join(delimiter)
+    const rule = createDirectRule('direct-ips', targets)
+    rules.push(rule)
+  }
+
+  return rules
 
   function createDirectRule(prefix: string, target: string): IRule {
     return {

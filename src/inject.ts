@@ -1,7 +1,6 @@
 import path from 'path'
 import {
   writeProfileFile
-, createTargetsFromAddressRanges
 , readProfileFile
 , updateProfile
 , getRuleList
@@ -16,15 +15,19 @@ export async function injectDirectRulesIntoProfile(
 , profileFilename: string
 ): Promise<void> {
   console.info('Updating the profile...')
+
+  const profile = await readProfileFile(profileFilename)
   const ipRanges = await parseAddressRangesFromStatisticsFile(
     statisticsFilename
   , cc
   )
-  const targets = createTargetsFromAddressRanges(ipRanges)
-  const profile = await readProfileFile(profileFilename)
-  const newRuleList = mergeRuleList(getRuleList(profile), createDirectRules(targets))
+  const newRuleList = mergeRuleList(
+    getRuleList(profile)
+  , createDirectRules(ipRanges)
+  )
   const newProfile = updateProfile(profile, newRuleList)
   await writeProfileFile(profileFilename, newProfile)
+
   console.info('Done.\n')
 
   console.info('Please run the command to load the new profile file:')
